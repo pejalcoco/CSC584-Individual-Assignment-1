@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Profile Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: #1a1a1a;
+            /* Extra top/bottom padding to keep layout clean */
+            padding: 40px 0;
+            overflow: hidden;
+            margin: 0;
+            
+           // background-image: url('datc3.jpg');
+            background-size: 100% auto;
+            background-position: center;
+            background-repeat: no-repeat;
+        
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 5px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+           // background-color: #000000;
+            background-image: url('datc3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1; 
+            
+        
+            animation: bgFadeIn 1.2s ease-in-out forwards;
+        }
+        
+        @keyframes bgFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+            .memo-wrapper {
+            position: fixed;
+            top: 40px;
+            left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Jarak antara memo 1 & memo 2 */
+            width: 250px;
+            z-index: 10;
+        }
+
+        .memo-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            padding: 16px 20px;
+            border-radius: 10px;
+            border-left: 5px solid #1d4ed8; /* Garisan biru */
+            border-top: 1px solid rgba(255, 255, 255, 0.6);
+            border-right: 1px solid rgba(255, 255, 255, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            font-size: 13px;
+            color: #1a252f;
+            line-height: 1.5;
+            
+            will-change: transform, opacity;
+            animation: memoSlideIn 0.8s ease-out forwards;
+        }
+
+        .memo-box.welcome-memo {
+            border-left: 5px solid #16a34a; /* Garisan hijau untuk ucapan */
+            animation-delay: 0.01s;
+        }
+
+        @keyframes memoSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .memo-box strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #1d4ed8;
+            font-size: 14px;
+        }
+
+        .memo-box.welcome-memo strong {
+            color: #16a34a;
+        }
+
+        @media (max-width: 1024px) {
+            .memo-wrapper {
+                display: none;
+            }
+        }
+        
+        /* --- WIDGET SUPPORT (KANAN BAWAH - SMOOTH MOTION) --- */
+        .support-widgets {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 99;
+        }
+
+        .support-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            
+            will-change: transform;
+            backface-visibility: hidden;
+            animation: smoothBounce 3s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .support-btn.faq {
+          background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 20px rgba(29, 78, 216, 0.4), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.6);
+        }
+
+        .support-btn.whatsapp {
+            background-color: #25D366;
+            animation-delay: 1.5s;
+        }
+
+        .support-btn:hover {
+            animation-play-state: paused;
+            transform: scale(1.12) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+        }
+
+        .support-btn i {
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .support-btn:hover i {
+            transform: scale(1.08);
+        }
+
+        .support-btn .tooltip {
+            position: absolute;
+            right: 72px;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(10px);
+        }
+
+        .support-btn:hover .tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @keyframes smoothBounce {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        
+        .container {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur (0px); 
+            padding: 28px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            /* Shifted down from the top by using 60px top margin */
+            margin: 22px auto 2px auto;
+            padding: 20px 30px 15px 30px;
+            box-shadow: 
+            0 10px 25px rgba(0, 0, 0, 0.25),   /* Bayang utama di bawah */
+            0 20px 48px rgba(0, 0, 0, 0.15),   /* Bayang lembut lebih luas */
+            inset 0 1px 1px rgba(255, 255, 255, 0.9);
+            
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);    
+            }
+        }
+        
+        
+        .logo {
+            display: block;
+            max-width: 500px;
+            height: auto;
+            margin: 0 auto 12px auto; /* Centers logo and adds space underneath */
+            position: relative;
+            top: 19px;
+            
+            background: rgba(255, 255, 255, 0.85); 
+            padding: 10px 20px;                     
+            border-radius: 10px;                    
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            
+             animation: fadeInDown 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);    
+            }
+        }
+        
+        h2 {
+            text-align: center;
+            color: #1a252f;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            font-style: italic;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.08);
+            width: 330px;
+            
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .form-note {
+            color: #dc2626; 
+            font-size: 12px;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+            color: #333;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 9px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            margin-top: 25px;
+            width: 100%;
+            background-color: #1d4ed8;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="memo-wrapper">
+    
+        <div class="memo-box">
+            <strong>📌 Reminder:</strong>
+            For Faculty of Computer & Mathematical Sciences students only.
+        </div>
+
+        <!-- Memo 2: Welcome & Congratulations -->
+        <div class="memo-box welcome-memo">
+            <strong>🎓 Welcome to UiTM Shah Alam!</strong>
+            Warmest congratulations to all FSKM students on advancing your education. May your hard work and dedication lead to a brighter future!
+        </div>
+    </div>
+    <!-- UiTM Logo Image -->
+    <img src="MUHAMMAD FAIZAL.png" alt="UiTM Logo" class="logo">
+
+    <div class="container">
+    <h2>Personal Profile Form</h2>
+    
+  
+    <p class="form-note">*All fields are mandatory</p>
+    
+   <form id="profileForm" action="ProfileServlet" method="post">
+    
+  
+        
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        
+        <label>Student ID:</label>
+        <input type="text" name="studentId" required>
+        
+        <label>Programme:</label>
+        <input type="text" name="programme" required>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        
+        <label>Hobbies:</label>
+        <input type="text" name="hobbies" required>
+        
+        <label>Short Self-Introduction:</label>
+      <textarea name="introduction" id="userIntro" rows="4" required></textarea>
+        
+        <input type="submit" value="Submit Profile">
+    </form>
+</div>
+
+   <div class="support-widgets">
+    <a href="javascript:void(0);" class="support-btn faq" onclick="showFaqAlert();">
+        <i class="fa-solid fa-circle-question"></i>
+        <span class="tooltip">Frequently Asked Questions</span>
+    </a>
+    
+    <a href="https://wa.me/60105269562?text=Hi,%20I%20have%20a%20question%20to%20ask." target="_blank" class="support-btn whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="tooltip">Ask on WhatsApp</span>
+    </a>
+</div>
+    
+    <div class="container">
+    <h2>Personal Profile Form</h2>
+    <p class="form-note">*All fields are mandatory</p>
+    
+    <!-- TINGGALKAN 1 TAG FORM SAHAJA -->
+    <form id="profileForm" action="ProfileServlet" method="post">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        
+        <label>Student ID:</label>
+        <input type="text" name="studentId" required>
+        
+        <label>Programme:</label>
+        <input type="text" name="programme" required>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        
+        <label>Hobbies:</label>
+        <input type="text" name="hobbies" required>
+        
+        <label>Short Self-Introduction:</label>
+        <textarea name="introduction" id="userIntro" rows="4" required></textarea>
+        
+        <input type="submit" value="Submit Profile">
+    </form>
+</div>
+    
+    <script>
+        // 1. Fungsi Popup Alert FAQ
+        function showFaqAlert() {
+            alert("Q: Do I need to fill in all the questions?\n\nA: Yes, you must complete and answer all questions.\n\n*If you have any other questions, please click the WhatsApp \"Live Agent\" button.");
+        }
+
+        // 2. Event Enter key pada Textarea
+        document.getElementById("userIntro").addEventListener("keydown", function(event) {
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                document.getElementById("profileForm").requestSubmit();
+            }
+        });
+    </script>
+</body>
+</html>
