@@ -3,15 +3,15 @@ This Java based student profile web app uses HTML, CSS, and JSP for its interfac
 
 
 ## Project Description
-This is a web-based student profile application built for CSC584 Individual Assignment 1. The system lets students from the Faculty of Computer & Mathematical Sciences (FSKM) at UiTM Shah Alam fill in their profile details using an online form and displays the submitted data neatly on a profile card.
+This is a web based student profile application built for CSC584 Individual Assignment 1. The system let students from the Faculty of Computer & Mathematical Sciences (FSKM) at UiTM Shah Alam fill in their profile details using an online form and displays the submitted data neatly on a profile card.
 
 ---
 
 ## Technologies Used
 - **Programming Language:** Java (Servlet) & JSP (JavaServer Pages)
-- **Frontend:** HTML5, CSS3, JavaScript
-- **IDE:** NetBeans IDE
-- **Server:** Apache Tomcat Server (v8.5 / v9.0 / v10.0)
+- **Frontend:** HTML, CSS, JavaScript
+- **IDE:** NetBeans IDE 8.2
+- **Server:** GlassFish Server 4.1.1
 
 ---
 
@@ -25,20 +25,20 @@ Follow these simple steps to run the application on your computer:
    
 
 2. **Open in NetBeans:**
-   - Open **NetBeans IDE**.
+   - Open **NetBeans IDE 8.2**.
    - Click `File` > `Open Project...` and choose the project folder.
 
 3. **Check Server Configuration:**
    - Right click on the project name > select `Properties` > click `Run`.
-   - Make sure **Apache Tomcat** is selected as the target server.
+   - Make sure **GlassFish Server** is selected as the target server.
 
 4. **Build and Run:**
    - Right click the project folder and click **Clean and Build**.
    - Press the green **Run** button (or press `F6`).
 
 5. **Open in Browser:**
-   - After Tomcat starts, open your browser and go to:
-     http://localhost:8080/CSC584-Individual-Assignment-1/
+   - After GlassFish starts, open your browser and go to:
+    [ http://localhost:8080/CSC584-Individual-Assignment-1/](http://localhost:8080/profile/)
     
 
 ---
@@ -52,8 +52,26 @@ Follow these simple steps to run the application on your computer:
 
 ## 📸 Output Screenshots
 
-### 1. Form Page (`index.html`)
+### 1.Form Page (`index.html`)
 ![Form Page Screenshot](front.png)
 
-### 2. Result Page (`ProfileInfo.jsp`)
-![Result Page Screenshot](build/web/datc3.jpg)2
+### 2.Fill Form Page (`index.html`)
+![Form Page Screenshot](fill.png)
+
+### 3.Student Profile Details (`ProfileInfo.jsp`)
+![Form Page Screenshot](result1.png)
+
+### 4.Student Profile Details (`ProfileInfo.jsp`)
+![Form Page Screenshot](result2.png)
+
+### 5.Frequently Asked Questions (`index.html`)
+![Form Page Screenshot](open1.png)
+
+### 6.Frequently Asked Questions (`index.html`)
+![Result Page Screenshot](ask.png)
+
+### 7.Whatsapp Link (`index.html`)
+![Result Page Screenshot](open2.png)
+
+### 8.Whatsapp Link (`index.html`)
+![Result Page Screenshot](whatsapps.png)
