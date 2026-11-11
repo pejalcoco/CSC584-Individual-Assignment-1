@@ -53,7 +53,7 @@ Follow these simple steps to run the application on your computer:
 ## 📸 Output Screenshots
 
 ### 1. Form Page (`index.html`)
-![Form Page Screenshot](profile/Screenshoot/front.png)
+![Form Page Screenshot](Screenshoot/front.png)
 
 ### 2. Result Page (`ProfileInfo.jsp`)
 ![Result Page Screenshot](build/web/datc3.jpg)2
