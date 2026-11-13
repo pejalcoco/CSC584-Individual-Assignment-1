@@ -1,6 +1,7 @@
-CSC584-Individual-Assignment-1
-This Java based student profile web app uses HTML, CSS, and JSP for its interface, while Java Servlets/JSP handle back end logic. Built using NetBeans, it runs on Tomcat server. To execute, open the project in NetBeans, select Clean and Build, then click Run. Access it via browser at http://localhost:8080/profile/ to submit data.
-
+_Name_: Muhammad Faizal Bin Nor Hazani
+_Student ID_: 2025382145
+**CSC584-Individual-Assignment-1**
+This Java based student profile web app uses HTML, CSS, and JSP for its interface, while Java Servlets and JSP handle back end logic. Built using NetBeans, it runs on GlassFish server. To execute, open the project in NetBeans, select Clean and Build, then click Run. Access it via browser at http://localhost:8080/profile/ to submit data.
 
 ## Project Description
 This is a web based student profile application built for CSC584 Individual Assignment 1. The system let students from the Faculty of Computer & Mathematical Sciences (FSKM) at UiTM Shah Alam fill in their profile details using an online form and displays the submitted data neatly on a profile card.
@@ -26,7 +27,7 @@ Follow these simple steps to run the application on your computer:
 
 2. **Open in NetBeans:**
    - Open **NetBeans IDE 8.2**.
-   - Click `File` > `Open Project...` and choose the project folder.
+   - Click `File` > `Open Project` and choose the project folder.
 
 3. **Check Server Configuration:**
    - Right click on the project name > select `Properties` > click `Run`.
