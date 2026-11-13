@@ -1,5 +1,6 @@
 _Name_: Muhammad Faizal Bin Nor Hazani
 _Student ID_: 2025382145
+
 **CSC584-Individual-Assignment-1**
 This Java based student profile web app uses HTML, CSS, and JSP for its interface, while Java Servlets and JSP handle back end logic. Built using NetBeans, it runs on GlassFish server. To execute, open the project in NetBeans, select Clean and Build, then click Run. Access it via browser at http://localhost:8080/profile/ to submit data.
 
