@@ -53,7 +53,7 @@ Follow these simple steps to run the application on your computer:
 
 ---
 
-## 📸 Output Screenshots
+##  Output Screenshots
 
 ### 1.Form Page (`index.html`)
 ![Form Page Screenshot](front.png)
